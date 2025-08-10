@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-100;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-300 rounded-md;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-gray-400;
+}
+
+/* Custom animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* Comment formatting */
+.comment-content {
+  @apply prose prose-sm max-w-none;
+}
+
+.comment-content code {
+  @apply bg-gray-100 px-1 py-0.5 rounded text-sm;
+}
+
+.comment-content pre {
+  @apply bg-gray-100 p-3 rounded-lg overflow-x-auto;
+}
+
+.comment-content blockquote {
+  @apply border-l-4 border-gray-300 pl-4 italic;
+}
+
+/* Mention styling */
+.mention {
+  @apply text-blue-600 font-medium hover:text-blue-800;
+}
