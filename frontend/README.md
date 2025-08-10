@@ -137,35 +137,6 @@ The project includes:
 - Integration tests for API calls
 - Accessibility testing
 
-## 🚀 Deployment
-
-### Production Build
-
-```bash
-npm run build
-```
-
-This creates an optimized production build in the `build` folder.
-
-### Deployment Options
-
-- **Netlify**: Drag and drop the `build` folder
-- **Vercel**: Connect your repository for automatic deployments
-- **AWS S3**: Upload the `build` folder to an S3 bucket
-- **Traditional hosting**: Upload files to your web server
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Add tests if applicable
-5. Submit a pull request
-
-## 📄 License
-
-This project is licensed under the MIT License.
-
 ## 🔗 Related
 
 - [Backend API Documentation](../backend/README.md)
