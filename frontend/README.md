@@ -1,70 +1,172 @@
-# Getting Started with Create React App
+# Feedback Management System - Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A modern React TypeScript application for managing user feedback, built with React 19, TypeScript, Tailwind CSS, and React Router.
 
-## Available Scripts
+## 🚀 Features
 
-In the project directory, you can run:
+- **User Authentication**: Login and registration with JWT tokens
+- **Feedback Management**: Create, view, edit, and delete feedback items
+- **Categories**: Organize feedback by categories with color coding
+- **Voting System**: Upvote and downvote feedback items
+- **Comments**: Threaded comments with markdown support and user mentions
+- **Responsive Design**: Modern UI built with Tailwind CSS
+- **Protected Routes**: Secure access to authenticated features
+- **Real-time Updates**: Dynamic content updates without page refresh
 
-### `npm start`
+## 🛠️ Tech Stack
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **React 19** - Modern React with hooks and functional components
+- **TypeScript** - Type-safe JavaScript development
+- **Tailwind CSS** - Utility-first CSS framework
+- **React Router v7** - Client-side routing
+- **React Hook Form** - Form handling with validation
+- **Axios** - HTTP client for API communication
+- **Lucide React** - Beautiful icons
+- **React Markdown** - Markdown rendering for comments
+- **Yup** - Schema validation
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 📁 Project Structure
 
-### `npm test`
+```
+src/
+├── components/
+│   ├── Auth/           # Authentication components
+│   ├── Comments/       # Comment-related components
+│   ├── Feedback/       # Feedback management components
+│   └── Layout/         # Layout and navigation components
+├── contexts/           # React contexts (AuthContext)
+├── pages/              # Page components
+├── services/           # API service layer
+├── types/              # TypeScript type definitions
+└── App.tsx            # Main application component
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🚀 Getting Started
 
-### `npm run build`
+### Prerequisites
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Node.js (v18 or higher)
+- npm or yarn
+- Backend API server running (see backend README)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Installation
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. **Clone the repository**
+   ```bash
+   git clone <repository-url>
+   cd frontend
+   ```
 
-### `npm run eject`
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+3. **Environment Setup**
+   Create a `.env` file in the frontend directory:
+   ```env
+   REACT_APP_API_URL=http://localhost:8000/api
+   ```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+4. **Start the development server**
+   ```bash
+   npm start
+   ```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+   The application will open at [http://localhost:3000](http://localhost:3000)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## 📝 Available Scripts
 
-## Learn More
+- `npm start` - Runs the app in development mode
+- `npm test` - Launches the test runner
+- `npm run build` - Builds the app for production
+- `npm run eject` - Ejects from Create React App (one-way operation)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 🔧 Configuration
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### API Configuration
 
-### Code Splitting
+The frontend communicates with the Laravel backend API. Configure the API URL in your `.env` file:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```env
+REACT_APP_API_URL=http://localhost:8000/api
+```
 
-### Analyzing the Bundle Size
+### Authentication
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+The app uses JWT tokens stored in localStorage for authentication. The `AuthContext` manages user state and token handling.
 
-### Making a Progressive Web App
+## 🎨 UI Components
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### Core Components
 
-### Advanced Configuration
+- **Layout**: Main application layout with header and navigation
+- **FeedbackList**: Displays all feedback items with filtering and pagination
+- **FeedbackForm**: Create and edit feedback items
+- **FeedbackCard**: Individual feedback item display
+- **CommentsList**: Threaded comments with markdown support
+- **CommentEditor**: Rich text editor for comments with user mentions
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### Styling
 
-### Deployment
+The application uses Tailwind CSS for styling with custom components and responsive design. The UI is modern and accessible with proper contrast and keyboard navigation.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## 🔒 Security Features
 
-### `npm run build` fails to minify
+- **Protected Routes**: Authentication-required routes
+- **Token Management**: Secure JWT token handling
+- **Input Validation**: Form validation with Yup schemas
+- **XSS Protection**: Sanitized markdown rendering
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 📱 Responsive Design
+
+The application is fully responsive and works on:
+- Desktop browsers
+- Tablets
+- Mobile devices
+
+## 🧪 Testing
+
+Run tests with:
+```bash
+npm test
+```
+
+The project includes:
+- Unit tests for components
+- Integration tests for API calls
+- Accessibility testing
+
+## 🚀 Deployment
+
+### Production Build
+
+```bash
+npm run build
+```
+
+This creates an optimized production build in the `build` folder.
+
+### Deployment Options
+
+- **Netlify**: Drag and drop the `build` folder
+- **Vercel**: Connect your repository for automatic deployments
+- **AWS S3**: Upload the `build` folder to an S3 bucket
+- **Traditional hosting**: Upload files to your web server
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Add tests if applicable
+5. Submit a pull request
+
+## 📄 License
+
+This project is licensed under the MIT License.
+
+## 🔗 Related
+
+- [Backend API Documentation](../backend/README.md)
+- [API Endpoints](../backend/routes/api.php)

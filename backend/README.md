@@ -1,61 +1,309 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Feedback Management System - Backend API
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A robust Laravel 12 API for managing user feedback with authentication, categories, voting, and threaded comments.
 
-## About Laravel
+## 🚀 Features
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- **User Authentication**: JWT-based authentication with Laravel Sanctum
+- **Feedback Management**: CRUD operations for feedback items
+- **Categories**: Organize feedback by categories with color coding
+- **Voting System**: Upvote and downvote functionality
+- **Threaded Comments**: Nested comments with markdown support and user mentions
+- **API Documentation**: RESTful API with comprehensive endpoints
+- **Database Migrations**: Automated database schema management
+- **Validation**: Robust input validation and error handling
+- **Pagination**: Efficient data pagination for large datasets
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 🛠️ Tech Stack
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- **Laravel 12** - Modern PHP framework
+- **Laravel Sanctum** - API authentication
+- **MySQL/PostgreSQL** - Database (configurable)
+- **Eloquent ORM** - Database abstraction layer
+- **League CommonMark** - Markdown processing
+- **PHP 8.2+** - Modern PHP features
 
-## Learning Laravel
+## 📁 Project Structure
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+```
+app/
+├── Http/Controllers/Api/    # API controllers
+│   ├── AuthController.php
+│   ├── FeedbackController.php
+│   ├── FeedbackCategoryController.php
+│   └── FeedbackCommentController.php
+├── Models/                  # Eloquent models
+│   ├── User.php
+│   ├── Feedback.php
+│   ├── FeedbackCategory.php
+│   └── FeedbackComment.php
+└── Providers/              # Service providers
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+database/
+├── migrations/             # Database migrations
+├── seeders/               # Database seeders
+└── factories/             # Model factories
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+routes/
+└── api.php               # API route definitions
+```
 
-## Laravel Sponsors
+## 🚀 Getting Started
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### Prerequisites
 
-### Premium Partners
+- PHP 8.2 or higher
+- Composer
+- MySQL/PostgreSQL database
+- Node.js (for frontend assets)
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+### Installation
 
-## Contributing
+1. **Clone the repository**
+   ```bash
+   git clone <repository-url>
+   cd backend
+   ```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+2. **Install PHP dependencies**
+   ```bash
+   composer install
+   ```
 
-## Code of Conduct
+3. **Environment Setup**
+   ```bash
+   cp .env.example .env
+   php artisan key:generate
+   ```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+4. **Configure Database**
+   Update your `.env` file with database credentials:
+   ```env
+   DB_CONNECTION=mysql
+   DB_HOST=127.0.0.1
+   DB_PORT=3306
+   DB_DATABASE=feedback_system
+   DB_USERNAME=your_username
+   DB_PASSWORD=your_password
+   ```
 
-## Security Vulnerabilities
+5. **Run Migrations and Seeders**
+   ```bash
+   php artisan migrate
+   php artisan db:seed
+   ```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+6. **Start the Development Server**
+   ```bash
+   php artisan serve
+   ```
 
-## License
+   The API will be available at [http://localhost:8000](http://localhost:8000)
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## 📚 API Endpoints
+
+### Authentication
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| POST | `/api/register` | Register a new user |
+| POST | `/api/login` | Login user |
+| POST | `/api/logout` | Logout user (authenticated) |
+| GET | `/api/me` | Get current user info (authenticated) |
+
+### Feedback Categories
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/api/feedback-categories` | Get all categories |
+
+### Feedback
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/api/feedback` | Get all feedback (public) |
+| GET | `/api/feedback/{id}` | Get specific feedback (public) |
+| POST | `/api/feedback` | Create feedback (authenticated) |
+| PUT | `/api/feedback/{id}` | Update feedback (authenticated) |
+| DELETE | `/api/feedback/{id}` | Delete feedback (authenticated) |
+| POST | `/api/feedback/{id}/upvote` | Upvote feedback (authenticated) |
+| POST | `/api/feedback/{id}/downvote` | Downvote feedback (authenticated) |
+
+### Comments
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/api/feedback/{id}/comments` | Get comments for feedback (public) |
+| POST | `/api/comments` | Create comment (authenticated) |
+| GET | `/api/comments/{id}` | Get specific comment (authenticated) |
+| PUT | `/api/comments/{id}` | Update comment (authenticated) |
+| DELETE | `/api/comments/{id}` | Delete comment (authenticated) |
+| GET | `/api/users/search` | Search users for mentions (authenticated) |
+
+## 🔧 Configuration
+
+### CORS Configuration
+
+Update `config/cors.php` for frontend integration:
+
+```php
+'allowed_origins' => ['http://localhost:3000'],
+'allowed_methods' => ['*'],
+'allowed_headers' => ['*'],
+```
+
+### Sanctum Configuration
+
+Configure token expiration in `config/sanctum.php`:
+
+```php
+'expiration' => 60 * 24 * 7, // 7 days
+```
+
+## 🗄️ Database Schema
+
+### Users Table
+- `id` - Primary key
+- `name` - User's full name
+- `email` - Unique email address
+- `password` - Hashed password
+- `email_verified_at` - Email verification timestamp
+- `created_at`, `updated_at` - Timestamps
+
+### Feedback Categories Table
+- `id` - Primary key
+- `name` - Category name (unique)
+- `description` - Category description
+- `color` - Hex color code for UI
+- `is_active` - Active status
+- `created_at`, `updated_at` - Timestamps
+
+### Feedback Table
+- `id` - Primary key
+- `title` - Feedback title
+- `description` - Feedback content
+- `user_id` - Foreign key to users
+- `feedback_category_id` - Foreign key to categories
+- `status` - Enum: open, in_progress, completed, rejected
+- `upvotes` - Upvote count
+- `downvotes` - Downvote count
+- `created_at`, `updated_at` - Timestamps
+
+### Feedback Comments Table
+- `id` - Primary key
+- `content` - Comment text
+- `content_html` - Processed HTML content
+- `user_id` - Foreign key to users
+- `feedback_id` - Foreign key to feedback
+- `parent_id` - Self-referencing for threaded comments
+- `mentioned_users` - JSON array of mentioned user IDs
+- `created_at`, `updated_at` - Timestamps
+
+## 🔒 Security Features
+
+- **JWT Authentication**: Secure token-based authentication
+- **Input Validation**: Comprehensive validation rules
+- **SQL Injection Protection**: Eloquent ORM protection
+- **XSS Protection**: HTML content sanitization
+- **Rate Limiting**: API rate limiting (configurable)
+- **CORS Protection**: Cross-origin request handling
+
+## 🧪 Testing
+
+Run tests with:
+```bash
+php artisan test
+```
+
+The project includes:
+- Unit tests for models
+- Feature tests for API endpoints
+- Database testing with factories
+
+## 🚀 Deployment
+
+### Production Setup
+
+1. **Environment Configuration**
+   ```bash
+   php artisan config:cache
+   php artisan route:cache
+   php artisan view:cache
+   ```
+
+2. **Database Migration**
+   ```bash
+   php artisan migrate --force
+   ```
+
+3. **Queue Workers** (if using queues)
+   ```bash
+   php artisan queue:work
+   ```
+
+### Server Requirements
+
+- PHP 8.2+
+- MySQL 8.0+ or PostgreSQL 12+
+- Composer
+- Web server (Apache/Nginx)
+
+### Deployment Options
+
+- **Laravel Forge**: Automated deployment
+- **Laravel Vapor**: Serverless deployment
+- **DigitalOcean App Platform**: Managed deployment
+- **Traditional VPS**: Manual deployment
+
+## 📊 Performance Optimization
+
+- **Database Indexing**: Optimized indexes on frequently queried columns
+- **Eager Loading**: Prevents N+1 query problems
+- **Caching**: Route and config caching
+- **Pagination**: Efficient data pagination
+- **API Rate Limiting**: Prevents abuse
+
+## 🔧 Development Commands
+
+```bash
+# Development server
+php artisan serve
+
+# Run migrations
+php artisan migrate
+
+# Rollback migrations
+php artisan migrate:rollback
+
+# Seed database
+php artisan db:seed
+
+# Clear caches
+php artisan cache:clear
+php artisan config:clear
+php artisan route:clear
+
+# Run tests
+php artisan test
+
+# Generate API documentation
+php artisan route:list --path=api
+```
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Add tests if applicable
+5. Submit a pull request
+
+## 📄 License
+
+This project is licensed under the MIT License.
+
+## 🔗 Related
+
+- [Frontend Application](../frontend/README.md)
+- [API Documentation](routes/api.php)
+- [Laravel Documentation](https://laravel.com/docs)
